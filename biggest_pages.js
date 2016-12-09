@@ -21,19 +21,26 @@ _.each(pages, function(p) {
   });
 });
 
-pages = _.sortBy(pages, 'size').reverse();
+totalSize = sum(_.pluck(pages, 'size'));
+
 
 // Spit them out
+print('<h1>Total size: ' + totalSize + '</h1>')
+
+pages = _.sortBy(pages, 'size').reverse();
+
 var template = Handlebars.compile([
-  '<a href="{{url}}"><h1>{{name}}</h1></a>',
-  '<p>Total Size: {{size}}</p>',
+  '<a href="{{url}}"><h1>{{id}} {{name}}</h1></a>',
+  '<p>API Name: {{apiName}}</p>',
+  '<p>Total Size: {{size}} ({{percent fraction}})</p>',
   '<ul>',
   '{{#each campaigns}}',
-  '  <li><a href="{{url}}">{{ name }}</a> ({{ size }})</li>',
+  '  <li><a href="{{url}}">{{id}} {{name}}</a> ({{size}})</li>',
   '{{/each}}',
   '</ul>',
 ].join(""));
 
 _.each(pages, function(p) {
+  p.fraction = p.size / totalSize;
   print(template(p));
 });
