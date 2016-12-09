@@ -42,5 +42,9 @@ var template = Handlebars.compile([
 
 _.each(pages, function(p) {
   p.fraction = p.size / totalSize;
+  p.url = 'https://app.optimizely.com/v2/projects/' + data.projectId + '/implementation/pages/' + p.id;
+  _.each(p.campaigns, function(c) {
+    c.url = 'https://app.optimizely.com/v2/projects/' + data.projectId + '/campaigns/' + c.id;
+  })
   print(template(p));
 });
