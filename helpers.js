@@ -20,8 +20,17 @@ function sum(arr) {
 
 Handlebars.registerHelper('json', function(obj) {
   return new Handlebars.SafeString('<pre>' + JSON.stringify(obj, null, 2) + '</pre>')
-})
+});
 
 Handlebars.registerHelper('percent', function(num) {
   return (100.0 * num).toFixed(1) + '%'
-})
+});
+
+var sizeToKilobytes = function(bytes) {
+  var numInKB = bytes / 1000;
+  return Math.round(numInKB * 100) / 100 + ' KB';
+}
+
+Handlebars.registerHelper("formatSize", function(size) {
+  return sizeToKilobytes(size);
+});

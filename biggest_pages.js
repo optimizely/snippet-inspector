@@ -23,19 +23,22 @@ _.each(pages, function(p) {
 
 totalSize = sum(_.pluck(pages, 'size'));
 
-
 // Spit them out
-print('<h1>Total size: ' + totalSize + '</h1>')
+print('<div class="muted title">Optimizely Snippet Inspector</div>')
+print('<h1><a href="' + snippet + '">' + snippet + '</a></h2>')
+print('<p>Total snippet size, uncompressed: ' + sizeToKilobytes(totalSize) + '</p>')
 
 pages = _.sortBy(pages, 'size').reverse();
 
 var template = Handlebars.compile([
-  '<a href="{{url}}"><h1>{{id}} {{name}}</h1></a>',
-  '<p>API Name: {{apiName}}</p>',
-  '<p>Total Size: {{size}} ({{percent fraction}})</p>',
+  '<a href="{{url}}" target="_blank"><h2>{{name}}</h2></a>',
+  '<p><span class="accent">API Name:</span> {{apiName}}</p>',
+  '<p><span class="accent">Page ID:</span> {{id}}</p>',
+  '<p><span class="accent">Total size:</span> {{formatSize size}} ({{percent fraction}} of snippet)</p>',
+  '<p class="accent">Experiments:</p>',
   '<ul>',
   '{{#each campaigns}}',
-  '  <li><a href="{{url}}">{{id}} {{name}}</a> ({{size}})</li>',
+  '  <li><a href="{{url}}" target="_blank">{{id}} {{name}}</a> ({{formatSize size}})</li>',
   '{{/each}}',
   '</ul>',
 ].join(""));

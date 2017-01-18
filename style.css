@@ -1,0 +1,57 @@
+body {
+	color: #242424;
+	padding-top: 2rem;
+}
+
+a {
+	color: #0081BA;
+}
+
+a:hover {
+	color: #00a4ed;
+}
+
+h1 {
+	font-size: 3.5rem;
+	font-weight: 300;
+	margin: 0.25rem 0 0.5rem 0;
+}
+
+h2 {
+	font-size: 2.2rem;
+	margin-top: 4rem;
+	margin-bottom: 0.8rem;
+}
+
+p {
+	margin-bottom: 0.2rem;
+}
+
+ul {
+	list-style-type: none;
+	padding-left: 4rem;
+}
+
+ul li {
+	margin-bottom: 0.2rem;
+}
+
+#output {
+	margin: 0;
+}
+
+.muted {
+	color: #888;
+}
+
+.accent {
+	text-transform: uppercase;
+	font-size: 14px;
+	font-weight: 500;
+	color: #3d3d3d;
+}
+
+.title {
+	font-size: 12px;
+	text-transform: uppercase;
+}
