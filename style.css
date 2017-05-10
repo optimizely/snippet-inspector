@@ -55,3 +55,7 @@ ul li {
 	font-size: 12px;
 	text-transform: uppercase;
 }
+
+pre {
+	white-space: pre-wrap;
+}
