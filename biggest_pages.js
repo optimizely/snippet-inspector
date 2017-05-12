@@ -26,7 +26,7 @@ totalSize = sum(_.pluck(pages, 'size'));
 // Spit them out
 print('<div class="muted title">Optimizely Snippet Inspector</div>')
 print('<h1><a href="' + snippet + '">' + snippet + '</a></h2>')
-print('<p>Total snippet size, uncompressed: ' + sizeToKilobytes(totalSize) + '</p>')
+print('<p>Total experiments size, uncompressed: ' + sizeToKilobytes(totalSize) + " (data only, doesn't include client code)</p>")
 
 pages = _.sortBy(pages, 'size').reverse();
 
