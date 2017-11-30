@@ -2,7 +2,7 @@ var snippetParam = location.search.split('snippet=')[1];
 
 if (!snippetParam) {
   snippet = 'https://cdn.optimizely.com/js/4391536040.js';
-} else if (snippetParam.includes('cdn.optimizely.com')) {
+} else if (snippetParam.includes('http:')) {
 
   snippet = snippetParam;
 } else {
