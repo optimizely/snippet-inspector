@@ -1,0 +1,57 @@
+
+<script>
+var eventPrefix = "time-to-";
+
+var observer = new PerformanceObserver(function(list) {
+ var perfEntries = list.getEntries();
+ for (var i = 0; i < perfEntries.length; i++) {
+    var eventKey = eventPrefix + perfEntries[i].name;
+    var entityId = perfEntries[i].name === "first-paint" ? 11047374401 : 11037775639; 
+    var time = Math.round(perfEntries[i].startTime + perfEntries[i].duration);
+    var payload = {
+      "account_id": 555650815,
+      "project_id": 11004391393,
+      "visitors":[
+        {
+          "visitor_id": <<<userId>>>,
+          "snapshots":[
+            {
+              "decisions":[
+                {
+                  "campaign_id": 11059136013,
+                  "experiment_id": 11055026641,
+                  "variation_id": <<<variationId>>>
+                }
+              ],
+              "events":[
+                {
+                  "entity_id": entityId,
+                  "key": eventKey,
+                  "timestamp": Date.now(),
+                  "value": time
+                }
+              ]
+            }
+          ]
+        }
+     ],
+     "anonymize_ip": false,
+     "client_name": "acmecorp/event-api-demo",
+     "client_version": "1.0.0"
+    }
+    $.ajax({
+        url: "https://logx.optimizely.com/v1/events",
+        contentType: "application/json",
+        method: "POST",
+        data: JSON.stringify(payload),
+        success: function(response) {
+            console.log("[Cloudflare = True] Successful Event POSTed (" + eventKey +" --> " + time + "ms) ");
+        }
+    })
+    
+ }
+});
+
+// register observer for long task notifications
+observer.observe({entryTypes: ["paint"]});
+</script>
