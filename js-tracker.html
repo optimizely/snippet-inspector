@@ -1,11 +1,13 @@
-
 <script>
 var eventPrefix = "time-to-";
 
 var observer = new PerformanceObserver(function(list) {
  var perfEntries = list.getEntries();
+ console.log("LIST = " + list);
+ console.log("perfEntries = " + perfEntries)
  for (var i = 0; i < perfEntries.length; i++) {
     var eventKey = eventPrefix + perfEntries[i].name;
+    console.log("eventKey[" + i + "] = " + eventKey);
     var entityId = perfEntries[i].name === "first-paint" ? 11047374401 : 11037775639; 
     var time = Math.round(perfEntries[i].startTime + perfEntries[i].duration);
     var payload = {
