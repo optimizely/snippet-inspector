@@ -11,8 +11,8 @@ var observer = new PerformanceObserver(function(list) {
     var entityId = perfEntries[i].name === "first-paint" ? 11047374401 : 11037775639; 
     var time = Math.round(perfEntries[i].startTime + perfEntries[i].duration);
     var payload = {
-      "account_id": 555650815,
-      "project_id": 11004391393,
+      "account_id": "555650815",
+      "project_id": "11004391393",
       "visitors":[
         {
           "visitor_id": "<<<userId>>>",
@@ -20,8 +20,8 @@ var observer = new PerformanceObserver(function(list) {
             {
               "decisions":[
                 {
-                  "campaign_id": 11059136013,
-                  "experiment_id": 11055026641,
+                  "campaign_id": "11059136013",
+                  "experiment_id": "11055026641",
                   "variation_id": <<<variationId>>>
                 }
               ],
@@ -30,7 +30,8 @@ var observer = new PerformanceObserver(function(list) {
                   "entity_id": entityId,
                   "key": eventKey,
                   "timestamp": Date.now(),
-                  "value": time
+                  "value": time,
+                  "uuid": Date.now().toString();
                 }
               ]
             }
